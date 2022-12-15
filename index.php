@@ -1,16 +1,9 @@
 <?php
+include 'functions.php';
 if(!empty($_GET['length'])) {
     $length = $_GET['length'];
 }
 
-function generatePassword($num){
-    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=';
-    $password = "";
-    for ($i = 0; $i < $num; $i++) {
-        $password .= $characters[mt_rand(0, strlen($characters) - 1)];
-    }
-    return $password;
-}
 $secure_password = generatePassword($length);
 ?>
 <!DOCTYPE html>
