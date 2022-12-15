@@ -1,10 +1,12 @@
 <?php
+session_start();
 include 'functions.php';
 if(!empty($_GET['length'])) {
     $length = $_GET['length'];
+    $secure_password = generatePassword($length);
+    $_SESSION['psw'] = $secure_password;
+    header("Location: http://localhost/php-strong-password-generator/password-recovery.php");
 }
-
-$secure_password = generatePassword($length);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +21,6 @@ $secure_password = generatePassword($length);
     <div class="container">
         <h1 class="text-center text-secondary fw-bold">Strong Password Generator</h1>
         <h2 class="text-center text-white fw-bold">Genera una password sicura</h2>
-        <div class="form-group my-3">
-            <input type="text" class="form-control" id="text" placeholder="La tua password" value="La password generata è: <?php echo $secure_password ?>">
-        </div>
         <form action="index.php" class="bg-white p-3" method="GET">
             <label for="password" class="w-50">Lunghezza password:</label>
             <input class="w-25" type="number" name="length" id="password" min="5" max="20">
