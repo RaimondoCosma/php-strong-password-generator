@@ -1,4 +1,17 @@
 <?php
+if(!empty($_GET['length'])) {
+    $length = $_GET['length'];
+}
+
+function generatePassword($num){
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=';
+    $password = "";
+    for ($i = 0; $i < $num; $i++) {
+        $password .= $characters[mt_rand(0, strlen($characters) - 1)];
+    }
+    return $password;
+}
+$secure_password = generatePassword($length);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +27,11 @@
         <h1 class="text-center text-secondary fw-bold">Strong Password Generator</h1>
         <h2 class="text-center text-white fw-bold">Genera una password sicura</h2>
         <div class="form-group my-3">
-            <input type="text" class="form-control" id="text" placeholder="La tua password" value="<?php ?>">
+            <input type="text" class="form-control" id="text" placeholder="La tua password" value="La password generata è: <?php echo $secure_password ?>">
         </div>
-        <form action="index.pho" class="bg-white p-3" method="GET">
+        <form action="index.php" class="bg-white p-3" method="GET">
             <label for="password" class="w-50">Lunghezza password:</label>
-            <input class="w-25" type="number" name="lunghezza" id="password">
+            <input class="w-25" type="number" name="length" id="password" min="5" max="20">
             <div class="pt-3">
                 <button class="btn btn-primary">Invia</button>
             </div>
