@@ -1,6 +1,7 @@
 <?php
 session_start();
-include 'functions.php';
+include __DIR__ . "/functions.php";
+
 if(!empty($_GET['length'])) {
     $length = $_GET['length'];
     $secure_password = generatePassword($length);

@@ -35,11 +35,23 @@ session_start();
         color: blue;
         font-weight: bolder;
     }
+    a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 5px 10px;
+        color: white;
+        background-color: red;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
 </style>
 <body>
     <div class="box">
         <h2 class="text-center bg-white py-3">La tua password è:</h2>
         <span><?php echo $_SESSION['psw']; ?></span>
+        <div>
+            <a href="quit-recovery.php">Esci</a>
+        </div>
     </div>
 </body>
 </html>
